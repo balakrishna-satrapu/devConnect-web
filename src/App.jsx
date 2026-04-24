@@ -1,19 +1,39 @@
 import NavBar from "./components/NavBar";
 import Login from "./components/Login";
 import { Routes, Route } from "react-router-dom";
-import { Provider } from "react-redux";
-import appStore from "./utils/appStore";
+import { useEffect } from "react";
+import Feed from "./components/Feed";
+import { addUser } from "./utils/userSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function App() {
-  return (
-    <Provider store={appStore}>
-      <div>
-        <NavBar />
-        <Routes>
-          <Route path="/login" element={<Login />} />
-        </Routes>
-      </div>
-    </Provider>
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const fetchUser = async () => {
+    try {
+      const user = await axios.get("http://localhost:7777/profile/view", { withCredentials: true } );
+      dispatch(addUser(user?.data));
+    } catch (err) {
+      console.log(err.message);
+      return navigate("/login");
+    }
+  }
+
+  useEffect(() => {
+    fetchUser();
+  });
+
+  return ( 
+    <div>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<Feed />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </div>
   )
 }
 
