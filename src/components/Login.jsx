@@ -5,8 +5,9 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const [emailId, setEmailId] = useState("rohit@gmail.com");
-  const [password, setPassword] = useState("Rohit@123");
+  const [emailId, setEmailId] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -20,7 +21,7 @@ const Login = () => {
       dispatch(addUser(res.data));
       return navigate("/");
     } catch (err) {
-      console.log(err.message);
+      setError(err?.response?.data?.message);
     }
   };
 
@@ -50,7 +51,8 @@ const Login = () => {
             setPassword(event.target.value);
           }}
         />
-        <button className="btn btn-primary my-6" onClick={handleLoginClick}>
+        <p className="text-sm text-red-400">{error}</p>
+        <button className="btn btn-primary my-2" onClick={handleLoginClick}>
           Submit
         </button>
       </fieldset>

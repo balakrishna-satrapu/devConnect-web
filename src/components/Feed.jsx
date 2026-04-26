@@ -35,7 +35,7 @@ const Feed = () => {
       {feed && (
         <div className="card bg-base-300 w-68 shadow-sm">
           <figure>
-            <img src={feed[0]?.profileImageURL} alt="Shoes" />
+            <img className="h-42" src={feed[0]?.profileImageURL} alt="Shoes" />
           </figure>
           <div className="card-body">
             <h2 className="card-title">

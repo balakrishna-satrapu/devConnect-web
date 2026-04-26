@@ -107,7 +107,7 @@ const Profile = () => {
       </fieldset>
         <div className="card bg-base-300 h-90 w-68 shadow-sm">
           <figure>
-            <img src={profileImageURL} alt="Shoes" />
+            <img src={profileImageURL} alt="Shoes"/>
           </figure>
           <div className="card-body">
             <h2 className="card-title">

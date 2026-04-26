@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import Profile from "./components/Profile";
+import Connections from "./components/Connections";
+import Requests from "./components/Requests";
 
 function App() {
   const navigate = useNavigate();
@@ -40,6 +42,8 @@ function App() {
         <Route path="/profile/edit" element={<Profile />} />
         <Route path="/" element={<Feed />} />
         <Route path="/login" element={<Login />} />
+         <Route path="/connections" element={<Connections />} />
+          <Route path="/Requests" element={<Requests />} />
       </Routes>
     </div>
   );
