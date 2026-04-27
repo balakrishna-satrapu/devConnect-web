@@ -42,8 +42,8 @@ function App() {
         <Route path="/profile/edit" element={<Profile />} />
         <Route path="/" element={<Feed />} />
         <Route path="/login" element={<Login />} />
-         <Route path="/connections" element={<Connections />} />
-          <Route path="/Requests" element={<Requests />} />
+        <Route path="/connections" element={<Connections />} />
+        <Route path="/Requests" element={<Requests />} />
       </Routes>
     </div>
   );

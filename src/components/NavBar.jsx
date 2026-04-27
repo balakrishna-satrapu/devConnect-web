@@ -24,7 +24,7 @@ const NavBar = () => {
     <div>
         <div className="navbar bg-base-300 shadow-sm">
           <div className="flex-1">
-            <a className="btn btn-ghost text-xl">DevConnect</a>
+            <Link to="/" className="btn btn-ghost text-xl">DevConnect</Link>
           </div>
           {user && <div className="flex items-center">
             <p className="px-4">Hey welcome {user.firstName} </p>
@@ -33,6 +33,7 @@ const NavBar = () => {
                 
                 <div className="w-10 rounded-full">
                   <img
+                    className="object-cover"
                     alt="profile photo"
                     src={user.profileImageURL} />
                 </div>
@@ -46,6 +47,7 @@ const NavBar = () => {
                     <span className="badge">New</span>
                   </Link>
                 </li>
+                <li><Link to="/">Feed</Link></li>
                 <li><Link to="/connections">Connections</Link></li>
                 <li><Link to="requests">Requests</Link></li>
                 <li><button onClick={handleLogout}>Logout</button></li>
