@@ -1,12 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { BASE_URL } from "../utils/constants";
 
 const Requests = () => {
     const [requests, setRequests] = useState([]);
 
     const handleReviewRequest = async (status, id) => {
         try {
-            await axios.post("http://localhost:7777/request/review/" + status + "/" + id, {}, { withCredentials: true});
+            await axios.post(BASE_URL + "/request/review/" + status + "/" + id, {}, { withCredentials: true});
             const newRequests = requests.filter(request => id !== request._id);
             setRequests(newRequests);
         } catch(err) {
@@ -16,7 +17,7 @@ const Requests = () => {
 
     const fetchConnectionRequests = async () => {
         try {
-            const res = await axios.get("http://localhost:7777/user/requests", { withCredentials: true});
+            const res = await axios.get(BASE_URL + "/user/requests", { withCredentials: true});
             setRequests(res.data);
         } catch (err) {
             console.log(err.message);

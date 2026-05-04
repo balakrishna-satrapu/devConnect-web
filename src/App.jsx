@@ -11,6 +11,7 @@ import axios from "axios";
 import Profile from "./components/Profile";
 import Connections from "./components/Connections";
 import Requests from "./components/Requests";
+import {BASE_URL} from "./utils/constants.js";
 
 function App() {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ function App() {
     try {
       if (existingUser) return;
 
-      const user = await axios.get("http://localhost:7777/profile/view", {
+      const user = await axios.get(BASE_URL + "/profile/view", {
         withCredentials: true,
       });
       dispatch(addUser(user?.data));

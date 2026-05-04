@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
+import { BASE_URL } from "../utils/constants";
 
 const Profile = () => {
   const user = useSelector((store) => store.user);
@@ -27,7 +28,7 @@ const Profile = () => {
         about,
         profileImageURL,
       };
-      await axios.patch("http://localhost:7777/profile/edit", newDetails, {
+      await axios.patch(BASE_URL + "/profile/edit", newDetails, {
         withCredentials: true,
       });
       dispatch(addUser(newDetails));

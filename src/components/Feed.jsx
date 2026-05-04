@@ -3,6 +3,7 @@ import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { addFeed, removeUser } from "../utils/feedSlice";
+import { BASE_URL } from "../utils/constants";
 
 const Feed = () => {
   const dispatch = useDispatch();
@@ -11,7 +12,7 @@ const Feed = () => {
 
   const handleSendRequest = async (status, id) => {
     try {
-      await axios.post("http://localhost:7777/request/send/" + status + "/" + id, {}, { withCredentials: true});
+      await axios.post(BASE_URL + "/request/send/" + status + "/" + id, {}, { withCredentials: true});
       dispatch(removeUser(id));
     } catch (err) {
       console.log(err.message);
@@ -20,7 +21,7 @@ const Feed = () => {
 
   const getFeed = async () => {
     try {
-      const userCards = await axios.get("http://localhost:7777/user/feed", {
+      const userCards = await axios.get(BASE_URL + "/user/feed", {
         withCredentials: true,
       });
       dispatch(addFeed(userCards?.data));
